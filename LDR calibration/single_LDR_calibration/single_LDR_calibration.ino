@@ -1,7 +1,6 @@
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-   pinMode(2, OUTPUT);
 }
 
 void loop() {
@@ -10,8 +9,7 @@ void loop() {
   int sensorValue = analogRead(A0);
   // Convert the analog reading (which goes from 0 - 1023) to a voltage (0 - 5V):
   float voltage = sensorValue * (5.0 / 1023.0);
-   digitalWrite(2, HIGH);
-  delay(100);
+  delay(100);                                               
   Serial.println(voltage);
 
 }
