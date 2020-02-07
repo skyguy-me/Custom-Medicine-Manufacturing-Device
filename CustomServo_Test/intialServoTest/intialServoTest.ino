@@ -5,14 +5,12 @@ void setup() {
 }
 
 void loop() {
-
   // put your main code here, to run repeatedly:
   analogWrite(2, 255);
   Serial.println("running");
   delay(2500);
   analogWrite(2, 0);
   Serial.println("stopped");
-  
   delay(2500);
 
 }
