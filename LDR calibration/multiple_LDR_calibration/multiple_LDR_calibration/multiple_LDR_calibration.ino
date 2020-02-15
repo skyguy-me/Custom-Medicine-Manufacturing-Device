@@ -1,4 +1,4 @@
-String stringTitle = "A1,A2,A3,A4,A5,A7,A8,A8,A10,OUTCOME";
+String stringTitle = "A0,A1,A2,A3,A4,A5,A6,A7,A8,A8,OUTCOME";
 String stringValue = "";
 
 int sensorCount = 10;
