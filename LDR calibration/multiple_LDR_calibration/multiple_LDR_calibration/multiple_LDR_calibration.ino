@@ -19,14 +19,16 @@ void loop() {
   int sensorValue;
   float voltage;
 
-  for(index = 0;index<sensorCount;index++){  voltage = sensorValue * (5.0 / 1023.0);
-}
+  for (index = 0; index < sensorCount; index++) {
+    String sensorCode = "A" + String(index);
+    Serial.println(sensorCode);
+  }
 
 
 
 
-
-  stringValue += voltage.ToString() + ",";
+voltage = sensorValue * (5.0 / 1023.0);
+  stringValue += String(voltage) + ",";
   delay(100);
   Serial.println(voltage);
 }
