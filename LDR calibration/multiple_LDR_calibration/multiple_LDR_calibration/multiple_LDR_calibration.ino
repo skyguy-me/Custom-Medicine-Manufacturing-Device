@@ -33,7 +33,6 @@ void loop() {
   }
     stringValue += "NIL";
 
-  delay(100);
   Serial.println(stringValue);
   stringValue="";
 }
