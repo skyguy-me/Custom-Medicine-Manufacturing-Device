@@ -1,4 +1,4 @@
-String stringTitle = "A1,A2,A3,A4,A5,A7,A8,A8,A10";
+String stringTitle = "A1,A2,A3,A4,A5,A7,A8,A8,A10,OUTCOME";
 String stringValue = "";
 
 int sensorCount = 10;
@@ -27,15 +27,13 @@ void loop() {
     //Serial.println(sensorCode);
 
     //read sesnor value and convert to voltage
-    sensorValue = analogRead(sensorCode);
+    sensorValue = analogRead(sensorCode.toInt());
     voltage = sensorValue * (5.0 / 1023.0);
     stringValue += String(voltage) + ",";
   }
-
-
-
-
+    stringValue += "NIL";
 
   delay(100);
   Serial.println(stringValue);
+  stringValue="";
 }
