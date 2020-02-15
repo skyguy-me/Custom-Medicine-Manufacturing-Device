@@ -8,6 +8,7 @@ int sensorCount = 10;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
+  Serial.println(stringTitle);
 
 
 
@@ -21,14 +22,20 @@ void loop() {
 
   for (index = 0; index < sensorCount; index++) {
     String sensorCode = "A" + String(index);
-    Serial.println(sensorCode);
+
+    //check sensorcode
+    //Serial.println(sensorCode);
+
+    //read sesnor value and convert to voltage
+    sensorValue = analogRead(sensorCode);
+    voltage = sensorValue * (5.0 / 1023.0);
+    stringValue += String(voltage) + ",";
   }
 
 
 
 
-voltage = sensorValue * (5.0 / 1023.0);
-  stringValue += String(voltage) + ",";
+
   delay(100);
-  Serial.println(voltage);
+  Serial.println(stringValue);
 }
