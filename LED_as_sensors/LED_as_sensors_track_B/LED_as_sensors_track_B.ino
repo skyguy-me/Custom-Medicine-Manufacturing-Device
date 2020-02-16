@@ -35,7 +35,7 @@ for(teller =0; teller < samples; teller++) {// remember the lowest value out of 
    test = test2;}
   }
   if (test < basis-marge && test2 < basis-marge && test3 < basis-marge){//all 3 low readings mus be < the basis reading
-    digitalWrite(led, HIGH);
+    digitalWrite(led, LOW);
     resetteller++;                                         // count how long the LED stays on
   }
     else{
