@@ -39,7 +39,7 @@ for(teller =0; teller < samples; teller++) {// remember the lowest value out of 
     resetteller++;                                         // count how long the LED stays on
   }
     else{
-      digitalWrite(led, LOW);
+      digitalWrite(led, HIGH);
       basis = test;                                         // if the lowest test reading is higher than the basis, basis will be reset
       resetteller = 0;
     }
