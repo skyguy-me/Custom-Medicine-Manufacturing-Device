@@ -1,5 +1,5 @@
 int led = 13;                                        // the pin where you will put the LED
-int sensorpin = A3;                           // the analog pin where you put your sensorLED
+int sensorpin = A1;                           // the analog pin where you put your sensorLED
 int resetteller = 0;                              // the rest are counters and variables to calculate with
 int sens = 0;
 int teller = 0;
