@@ -20,19 +20,60 @@ void loop() {
   int sensorValue;
   float voltage;
 
-  for (index = 0; index < sensorCount; index++) {
-    String sensorCode = "A" + String(index);
 
-    //check sensorcode
-    //Serial.println(sensorCode);
+  sensorValue = analogRead(A0);
+  voltage = sensorValue * (5.0 / 1023.0);
+  stringValue += String(voltage) + ",";
 
-    //read sesnor value and convert to voltage
-    sensorValue = analogRead(sensorCode.toInt());
-    voltage = sensorValue * (5.0 / 1023.0);
-    stringValue += String(voltage) + ",";
-  }
-    stringValue += "NIL"; // currently used for empty calibration
+  sensorValue = analogRead(A1);
+  voltage = sensorValue * (5.0 / 1023.0);
+  stringValue += String(voltage) + ",";
+
+
+  sensorValue = analogRead(A2);
+  voltage = sensorValue * (5.0 / 1023.0);
+  stringValue += String(voltage) + ",";
+
+
+  sensorValue = analogRead(A3);
+  voltage = sensorValue * (5.0 / 1023.0);
+  stringValue += String(voltage) + ",";
+
+
+  sensorValue = analogRead(A4);
+  voltage = sensorValue * (5.0 / 1023.0);
+  stringValue += String(voltage) + ",";
+
+
+  sensorValue = analogRead(A5);
+  voltage = sensorValue * (5.0 / 1023.0);
+  stringValue += String(voltage) + ",";
+
+
+  sensorValue = analogRead(A6);
+  voltage = sensorValue * (5.0 / 1023.0);
+  stringValue += String(voltage) + ",";
+
+
+  sensorValue = analogRead(A7);
+  voltage = sensorValue * (5.0 / 1023.0);
+  stringValue += String(voltage) + ",";
+
+
+
+  sensorValue = analogRead(A8);
+  voltage = sensorValue * (5.0 / 1023.0);
+  stringValue += String(voltage) + ",";
+
+
+  sensorValue = analogRead(A9);
+  voltage = sensorValue * (5.0 / 1023.0);
+  stringValue += String(voltage) + ",";
+
+  stringValue += "NIL"; // currently used for empty calibration
   Serial.println(stringValue);
  // delay(1000);
   stringValue="";
+  //delay(1000);
+  stringValue = "";
 }
