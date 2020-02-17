@@ -33,6 +33,6 @@ void loop() {
   }
     stringValue += "NIL"; // currently used for empty calibration
   Serial.println(stringValue);
-  delay(1000);
+ // delay(1000);
   stringValue="";
 }
