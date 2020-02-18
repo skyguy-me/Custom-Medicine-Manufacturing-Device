@@ -74,7 +74,7 @@ void loop() {
   //  voltage = sensorValue * (5.0 / 1023.0);
   //  stringValue += String(voltage) + ",";
 
-  stringValue += "NIL"; // currently used for empty calibration
+  stringValue += "PILL"; // currently used for empty calibration
     Serial.println(stringValue);
   // delay(1000);
   stringValue = "";
