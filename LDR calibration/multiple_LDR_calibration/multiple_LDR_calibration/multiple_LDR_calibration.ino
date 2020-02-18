@@ -69,15 +69,15 @@ void loop() {
   sensorValue = analogRead(A9);
   voltage = sensorValue * (5.0 / 1023.0);
   stringValue += String(voltage) + ",";
-  
-  sensorValue = analogRead(A10);
-  voltage = sensorValue * (5.0 / 1023.0);
-  stringValue += String(voltage) + ",";
+  //
+  //  sensorValue = analogRead(A10);
+  //  voltage = sensorValue * (5.0 / 1023.0);
+  //  stringValue += String(voltage) + ",";
 
   stringValue += "NIL"; // currently used for empty calibration
-  Serial.println(stringValue);
- // delay(1000);
-  stringValue="";
+    Serial.println(stringValue);
+  // delay(1000);
+  stringValue = "";
   //delay(1000);
   stringValue = "";
 }
