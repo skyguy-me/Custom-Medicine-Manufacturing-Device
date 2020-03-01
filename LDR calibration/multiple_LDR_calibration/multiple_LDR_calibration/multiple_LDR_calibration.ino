@@ -7,7 +7,7 @@ int sensorCount = 10;
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
+  Serial.begin(2000000);
   Serial.println(stringTitle);
 
 
@@ -19,6 +19,8 @@ void loop() {
   int index = 0;
   int sensorValue;
   float voltage;
+
+uint32_t temp = micros();
 
 
   sensorValue = analogRead(A0);
@@ -74,8 +76,11 @@ void loop() {
   //  voltage = sensorValue * (5.0 / 1023.0);
   //  stringValue += String(voltage) + ",";
 
+temp = micros() - temp;
+
+Serial.println(temp);
   stringValue += "PILL"; // currently used for empty calibration
-    Serial.println(stringValue);
+// Serial.println(stringValue);
   // delay(1000);
   stringValue = "";
   //delay(1000);
