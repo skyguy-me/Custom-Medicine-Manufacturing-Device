@@ -13,9 +13,9 @@ bool packStage = false;
 //state machine end
 
 //scan flags start
+bool startScan = false;
 bool scanned = false;
 //scan flags end
-
 
 int pixySelect = 49; //change as required for mega/controllino board mapping
 
@@ -73,81 +73,88 @@ void loop()
     //default state to always wait for input from host PC for allowing the feeder to load x balls as requested by host PC
   }
 
-  if (feederStage)
+  while (feederStage)
   {
-
   }
-  if (scanStage)
+
+  while (scanStage)
   {
-    //to capture and store 50 LDR frames and push for data verification stage
-    float time = micros();
-    while (!scanned)
+    if(digitalRead(35)) { //randomly assigned pin 35
+
+    }
+ 
+    if (startScan)
     {
-      for (i = 0; i < 50; i++)
+      //to capture and store 50 LDR frames and push for data verification stage
+      float time = micros();
+      while (!scanned)
       {
-        for (j = 0; j < 12; j++)
+        for (i = 0; i < 50; i++)
         {
-          switch (j)
+          for (j = 0; j < 12; j++)
           {
-          case 0:
-            dataFrameRunning[1][i][j] = analogRead(A0);
-            //  Serial.print(String(dataFrameRunning[1][i][j] = analogRead(A0))); //use for debugging
-            break;
-          case 1:
-            dataFrameRunning[1][i][j] = analogRead(A1);
-            // Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A1)));
-            break;
-          case 2:
-            dataFrameRunning[1][i][j] = analogRead(A2);
-            //  Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A2)));
-            break;
-          case 3:
-            dataFrameRunning[1][i][j] = analogRead(A3);
-            // Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A3)));
-            break;
-          case 4:
-            dataFrameRunning[1][i][j] = analogRead(A4);
-            // Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A4)));
-            break;
-          case 5:
-            dataFrameRunning[1][i][j] = analogRead(A5);
-            //   Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A5)));
-            break;
-          case 6:
-            dataFrameRunning[1][i][j] = analogRead(A6);
-            //Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A6)));
-            break;
-          case 7:
-            dataFrameRunning[1][i][j] = analogRead(A7);
-            // Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A7)));
-            break;
-          case 8:
-            dataFrameRunning[1][i][j] = analogRead(A8);
-            //  Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A8)));
-            break;
-          case 9:
-            dataFrameRunning[1][i][j] = analogRead(A9);
-            // Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A9)));
-            break;
-          case 10:
-            dataFrameRunning[1][i][j] = analogRead(A10);
-            //Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A10)));
-            break;
-          case 11:
-            dataFrameRunning[1][i][j] = analogRead(A11);
-            //Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A11)));
-            break;
-          case 12:
-            dataFrameRunning[1][i][j] = analogRead(A12);
-            //Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A12)) + "\n");
-            break;
+            switch (j)
+            {
+            case 0:
+              dataFrameRunning[1][i][j] = analogRead(A0);
+              //  Serial.print(String(dataFrameRunning[1][i][j] = analogRead(A0))); //use for debugging
+              break;
+            case 1:
+              dataFrameRunning[1][i][j] = analogRead(A1);
+              // Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A1)));
+              break;
+            case 2:
+              dataFrameRunning[1][i][j] = analogRead(A2);
+              //  Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A2)));
+              break;
+            case 3:
+              dataFrameRunning[1][i][j] = analogRead(A3);
+              // Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A3)));
+              break;
+            case 4:
+              dataFrameRunning[1][i][j] = analogRead(A4);
+              // Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A4)));
+              break;
+            case 5:
+              dataFrameRunning[1][i][j] = analogRead(A5);
+              //   Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A5)));
+              break;
+            case 6:
+              dataFrameRunning[1][i][j] = analogRead(A6);
+              //Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A6)));
+              break;
+            case 7:
+              dataFrameRunning[1][i][j] = analogRead(A7);
+              // Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A7)));
+              break;
+            case 8:
+              dataFrameRunning[1][i][j] = analogRead(A8);
+              //  Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A8)));
+              break;
+            case 9:
+              dataFrameRunning[1][i][j] = analogRead(A9);
+              // Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A9)));
+              break;
+            case 10:
+              dataFrameRunning[1][i][j] = analogRead(A10);
+              //Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A10)));
+              break;
+            case 11:
+              dataFrameRunning[1][i][j] = analogRead(A11);
+              //Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A11)));
+              break;
+            case 12:
+              dataFrameRunning[1][i][j] = analogRead(A12);
+              //Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A12)) + "\n");
+              break;
+            }
           }
+          Serial.print("\n");
+          scanned = true;
         }
-        Serial.print("\n");
-        scanned = true;
+        //    i = 0;
+        // Serial.println("time to complete = " + String(time = micros() - time) + " microseconds"); // speed check
       }
-      //    i = 0;
-      // Serial.println("time to complete = " + String(time = micros() - time) + " microseconds"); // speed check
     }
   }
   if (packStage)
