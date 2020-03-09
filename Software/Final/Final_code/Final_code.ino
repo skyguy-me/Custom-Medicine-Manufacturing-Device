@@ -73,6 +73,16 @@ void loop()
   if (waitStage)
   {
     //default state to always wait for input from host PC for allowing the feeder to load x balls as requested by host PC
+
+
+
+
+
+
+
+
+
+    
   }
 
   while (feederStage)
