@@ -10,6 +10,12 @@ bool feederStage = false;
 bool scanStage = false;
 bool verificationStage = false;
 bool packStage = false;
+//state machine end
+
+//scan flags start
+bool scanned = false;
+//scan flags end
+
 
 int pixySelect = 49; //change as required for mega/controllino board mapping
 
@@ -74,7 +80,7 @@ void loop()
   {
     //to capture and store 50 LDR frames and push for data verification stage
     float time = micros();
-    while (i < 50)
+    while (!scanned)
     {
 
       for (i = 0; i < 50; i++)
@@ -138,7 +144,10 @@ void loop()
           }
         }
         Serial.print("\n");
+        scanned = true;
+
       }
+
       //    i = 0;
 
       // Serial.println("time to complete = " + String(time = micros() - time) + " microseconds"); // speed check
