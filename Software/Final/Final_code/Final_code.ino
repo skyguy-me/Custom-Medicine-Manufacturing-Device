@@ -8,7 +8,11 @@
 
 //libraries start
 //include <Controllino.h>
+#include <I2Cdev.h>
+#include <PCA9685.h>
 #include <SPI.h>
+#include <MotorDriver.h>
+#include <seeed_pwm.h>
 //libraries end
 
 
