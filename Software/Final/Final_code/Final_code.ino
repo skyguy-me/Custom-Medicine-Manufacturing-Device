@@ -145,11 +145,8 @@ void loop()
         }
         Serial.print("\n");
         scanned = true;
-
       }
-
       //    i = 0;
-
       // Serial.println("time to complete = " + String(time = micros() - time) + " microseconds"); // speed check
     }
   }
