@@ -1,4 +1,4 @@
-#include <Controllino.h>
+//include <Controllino.h>
 #include <SPI.h>
 
 //global variable declarations start
@@ -19,7 +19,7 @@ bool stringComplete = false; // whether the string is complete
 String commandString = "";
 
 //single data frame for AI, initially set at 50
-int dataFrameRunningRunning[1][50][12] = {{{0}}};
+int dataFrameRunning[1][50][12] = {{{0}}};
 
 int i = 0;
 int j;
@@ -74,10 +74,10 @@ void loop()
   {
     //to capture and store 50 LDR frames and push for data verification stage
     float time = micros();
-    while (i < 1000)
+    while (i < 50)
     {
 
-      for (i = 0; i < 1000; i++)
+      for (i = 0; i < 50; i++)
       {
         for (j = 0; j < 12; j++)
         {
