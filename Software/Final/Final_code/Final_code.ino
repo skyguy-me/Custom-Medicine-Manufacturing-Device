@@ -2,7 +2,7 @@
 
 //state machine
 bool waitStage = true;
-bool fedderStage = false;
+bool feederStage = false;
 bool scanStage = false;
 bool packStage = false;
 
@@ -16,6 +16,19 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
 
-}
+  if (waitStage){
+    
+  }
+
+  if (feederStage){
+
+  }
+  if (scanStage){
+
+  }
+  if(packStage){
+    
+  }
+
+}   
