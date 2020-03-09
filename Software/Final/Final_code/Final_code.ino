@@ -1,5 +1,15 @@
+//Project Designer Drugs: Assembling Custom Dosed Personal Medicines
+//NUS ESP3903 project in pursuit of Bachelor of Engineering in Engineering Science 
+//Primary Author and Inital Code contributed by Gokul Nathan
+
+//Author(s): Gokul Nathan
+
+
+//libraries start
 //include <Controllino.h>
 #include <SPI.h>
+//libraries end
+
 
 //global variable declarations start
 
@@ -17,22 +27,27 @@ bool startScan = false;
 bool scanned = false;
 //scan flags end
 
-int pixySelect = 49; //change as required for mega/controllino board mapping
+//device starts
+int pixySelect = 49;         //change as required for mega/controllino board mapping
+int linearIntteruptPin = 35; //change as required for mega/controllino board mapping
+//device ends
 
-//for serial communication
+//start for serial communication
 String inputString = "";     // a string to hold incoming data
 bool stringComplete = false; // whether the string is complete
 String commandString = "";
-
-int linearIntteruptPin = 35; //change as required for mega/controllino board mapping
+//end for serial communication
 
 //single data frame for AI, initially set at 50
 int dataFrameRunning[1][50][12] = {{{0}}};
+//end data frame
 
+//index variables starts
 int i = 0;
-int j;
+int j = 0;
 int x = 0;
 int y = 0;
+//index variables ends
 
 //global variable declarations end
 
