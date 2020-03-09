@@ -74,15 +74,18 @@ void loop()
   {
     //default state to always wait for input from host PC for allowing the feeder to load x balls as requested by host PC
 
-
-
-
-
-
-
-
-
-
+    if (commandString.equals("MOTO"))
+    {
+      String text = getTextNumber();
+      recievedString = text;
+      float data = (float)text.toFloat();
+      Serial.print("Float sent");
+      Serial.print(data);
+      Serial.print("\n");
+      // setVoltage(data);
+    }
+    inputString = "";
+    commandString = "";
   }
 
   while (feederStage)
@@ -176,15 +179,23 @@ void loop()
   }
 }
 
-
-
-
+//retrieve command from incoming string
 void getCommand()
 {
   if (inputString.length() > 0)
   {
     commandString = inputString.substring(1, 5);
   }
+}
+
+//retrieve numerical values from string;
+String getTextNumber()
+{
+  String value = inputString.substring(5, inputString.length() - 1);
+  recievedString = value;
+
+  float data = (float)recievedString.toFloat();
+  return value;
 }
 
 //Serial event handlers start
