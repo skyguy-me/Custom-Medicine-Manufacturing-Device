@@ -3,6 +3,7 @@
         {
             "name": "Win32",
             "includePath": [
+                "C:\\Users\\Gokul\\Documents\\Arduino\\libraries\\CONTROLLINO",
                 "C:\\Users\\Gokul\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\**",
                 "C:\\Users\\Gokul\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.2\\**"
             ],
@@ -13,9 +14,11 @@
             "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.24.28314/bin/Hostx64/x64/cl.exe",
             "cStandard": "c11",
             "cppStandard": "c++17",
-            "defines": [ "USBCON" ,
+            "defines": [
+                "USBCON",
                 "__AVR_ATmega32U4__",
-                "ARDUINO=10800"] 
+                "ARDUINO=10800"
+            ]
         }
     ],
     "version": 4

@@ -1,3 +1,4 @@
+#include <Controllino.h>
 #include <SPI.h>
 
 //global variable declarations start
@@ -20,7 +21,7 @@ bool stringComplete = false;  // whether the string is complete
 String commandString = "";
 
 //single data frame for AI, initially set at 50
-int dataFrameRunning[1][50][12] =  {{{0}}};
+int dataFrameRunningRunning[1][50][12] =  {{{0}}};
 
 
 
@@ -79,7 +80,48 @@ void loop() {
   }
   if (scanStage){
     //to capture and store 50 LDR frames and push for data verification stage
+  float time = micros();
+    while (i < 1000) {
 
+      for (i = 0; i < 1000; i++) {
+        for (j = 0; j < 12; j++) {
+          switch (j) {
+            case 0:   Serial.print(String(dataFrameRunning[1][i][j] = analogRead(CONTROLLINO_A0)));
+              break;
+            case 1: Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(CONTROLLINO_A1)));
+              break;
+            case 2: Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(CONTROLLINO_A2)));
+              break;
+            case 3: Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(CONTROLLINO_A3)));
+              break;
+            case 4: Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(CONTROLLINO_A4)));
+              break;
+            case 5: Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(CONTROLLINO_A5)));
+              break;
+            case 6: Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(CONTROLLINO_A6)));
+              break;
+            case 7: Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(CONTROLLINO_A7)));
+              break;
+            case 8: Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(CONTROLLINO_A8)));
+              break;
+            case 9: Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(CONTROLLINO_A9)));
+              break;
+            case 10: Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(CONTROLLINO_A10)));
+              break;
+            case 11: Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(CONTROLLINO_A11)));
+              break;
+            case 12: Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(CONTROLLINO_A12)) + "\n");
+              break;
+          }
+        }
+        Serial.print("\n");
+      }
+      //    i = 0;
+
+      Serial.println("time to complete = " + String(time = micros() - time) + " microseconds" );
+
+
+    }
 
 
   }
