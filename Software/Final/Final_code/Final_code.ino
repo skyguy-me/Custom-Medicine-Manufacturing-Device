@@ -84,43 +84,56 @@ void loop()
           switch (j)
           {
           case 0:
-            Serial.print(String(dataFrameRunning[1][i][j] = analogRead(A0)));
+            dataFrameRunning[1][i][j] = analogRead(A0);
+            //  Serial.print(String(dataFrameRunning[1][i][j] = analogRead(A0))); //use for debugging
             break;
           case 1:
-            Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A1)));
+            dataFrameRunning[1][i][j] = analogRead(A1);
+            // Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A1)));
             break;
           case 2:
-            Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A2)));
+            dataFrameRunning[1][i][j] = analogRead(A2);
+            //  Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A2)));
             break;
           case 3:
-            Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A3)));
+            dataFrameRunning[1][i][j] = analogRead(A3);
+            // Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A3)));
             break;
           case 4:
-            Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A4)));
+            dataFrameRunning[1][i][j] = analogRead(A4);
+            // Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A4)));
             break;
           case 5:
-            Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A5)));
+            dataFrameRunning[1][i][j] = analogRead(A5);
+            //   Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A5)));
             break;
           case 6:
-            Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A6)));
+            dataFrameRunning[1][i][j] = analogRead(A6);
+            //Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A6)));
             break;
           case 7:
-            Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A7)));
+            dataFrameRunning[1][i][j] = analogRead(A7);
+            // Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A7)));
             break;
           case 8:
-            Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A8)));
+            dataFrameRunning[1][i][j] = analogRead(A8);
+            //  Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A8)));
             break;
           case 9:
-            Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A9)));
+            dataFrameRunning[1][i][j] = analogRead(A9);
+            // Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A9)));
             break;
           case 10:
-            Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A10)));
+            dataFrameRunning[1][i][j] = analogRead(A10);
+            //Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A10)));
             break;
           case 11:
-            Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A11)));
+            dataFrameRunning[1][i][j] = analogRead(A11);
+            //Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A11)));
             break;
           case 12:
-            Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A12)) + "\n");
+            dataFrameRunning[1][i][j] = analogRead(A12);
+            //Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A12)) + "\n");
             break;
           }
         }
@@ -128,7 +141,7 @@ void loop()
       }
       //    i = 0;
 
-      Serial.println("time to complete = " + String(time = micros() - time) + " microseconds");
+      // Serial.println("time to complete = " + String(time = micros() - time) + " microseconds"); // speed check
     }
   }
   if (packStage)
