@@ -12,7 +12,8 @@ bool packStage = false;
 void setup() {
   // put your setup code here, to run once:
 
- Serial.begin(9600);
+ Serial.begin(9600); // communicate with host PC
+ Serial1.begin(2000000);
 
 }
 
