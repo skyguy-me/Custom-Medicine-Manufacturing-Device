@@ -1,4 +1,3 @@
-#include ("Arduino.h")
 
 //state machine
 bool waitStage = true;
