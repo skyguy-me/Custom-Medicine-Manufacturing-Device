@@ -18,6 +18,11 @@ bool packStage = false;
 int pixySelect = 49; //change as required for mega/controllino board mapping
 
 
+//for serial communication
+String inputString = "";         // a string to hold incoming data
+bool stringComplete = false;  // whether the string is complete
+String commandString = "";
+
 
 void setup() {
   // put your setup code here, to run once:
@@ -51,7 +56,9 @@ void loop() {
 
 
 
-void serialEvent1() {
+
+//Serial event handlers start
+void serialEvent() {
   while (Serial.available()) {
     char inChar = (char)Serial.read();
    // Serial.println(inChar);
@@ -62,10 +69,6 @@ void serialEvent1() {
     }
   }
 }
-
-
-
-
 void serialEvent1() {
   while (Serial1.available()) {
     char inChar = (char)Serial1.read();
@@ -77,8 +80,6 @@ void serialEvent1() {
     }
   }
 }
-
-
 void serialEvent2() {
   while (Serial2.available()) {
     char inChar = (char)Serial2.read();
@@ -90,3 +91,4 @@ void serialEvent2() {
     }
   }
 }
+//Serial event handlers end
