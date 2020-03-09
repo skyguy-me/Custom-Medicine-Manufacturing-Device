@@ -192,9 +192,7 @@ void getCommand()
 String getTextNumber()
 {
   String value = inputString.substring(5, inputString.length() - 1);
-  recievedString = value;
-
-  float data = (float)recievedString.toFloat();
+  float data = (float)value.toFloat();
   return value;
 }
 
