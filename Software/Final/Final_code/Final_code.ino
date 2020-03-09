@@ -20,8 +20,14 @@ bool stringComplete = false;  // whether the string is complete
 String commandString = "";
 
 //single data frame for AI, initially set at 50
-
 int dataFrameRunning[1][50][12] =  {{{0}}};
+
+
+
+int i = 0;
+int j;
+int x = 0;
+int y = 0;
 
 
 //global variable declarations end
