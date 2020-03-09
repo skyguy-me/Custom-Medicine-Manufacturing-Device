@@ -1,19 +1,15 @@
 #include <SPI.h>
 
-
+//global variable declarations start
 
 //state machine
-bool waitStage = true;
+bool initalBoot = true;
+bool waitStage = false;
 bool feederStage = false;
 bool scanStage = false;
 bool verificationStage = false;
 bool packStage = false;
 
-
-// int MOSI = 51;
-// int MISO = 50;
-// int SCK = 52;
-// int RESET =  48; //change as required for mega/controllino board mapping
 
 int pixySelect = 49; //change as required for mega/controllino board mapping
 
@@ -23,14 +19,44 @@ String inputString = "";         // a string to hold incoming data
 bool stringComplete = false;  // whether the string is complete
 String commandString = "";
 
+//single data frame for AI, initially set at 50
+
+int dataFrameRunning[1][50][12] =  {{{0}}};
+
+
+//global variable declarations end
+
 
 void setup() {
   // put your setup code here, to run once:
+
+if(initalBoot){
+// run upon inital boot
 
  Serial.begin(9600); // communicate with host PC
  Serial1.begin(9600); 
  Serial2.begin(9600);
 
+
+
+  pinMode(A0, INPUT);
+  pinMode(A1, INPUT);  
+  pinMode(A2, INPUT);
+  pinMode(A3, INPUT); 
+  pinMode(A4, INPUT); 
+  pinMode(A5, INPUT); 
+  pinMode(A6, INPUT); 
+  pinMode(A7, INPUT); 
+  pinMode(A8, INPUT); 
+  pinMode(A9, INPUT);  
+  pinMode(A10, INPUT); 
+  pinMode(A11, INPUT);
+
+
+  initalBoot =false;
+  waitStage =  true;
+
+}
 //  SPI.transfer(0x00); //SPI communication with pixy
 }
 
@@ -47,6 +73,9 @@ void loop() {
   }
   if (scanStage){
     //to capture and store 50 LDR frames and push for data verification stage
+
+
+
   }
   if(packStage){
 
