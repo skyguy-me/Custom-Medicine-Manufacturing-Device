@@ -77,12 +77,10 @@ void loop()
     if (commandString.equals("MOTO"))
     {
       String text = getTextNumber();
-      recievedString = text;
       float data = (float)text.toFloat();
       Serial.print("Float sent");
       Serial.print(data);
       Serial.print("\n");
-      // setVoltage(data);
     }
     inputString = "";
     commandString = "";
