@@ -82,7 +82,7 @@ void loop()
 
 
 
-    
+
   }
 
   while (feederStage)
@@ -173,6 +173,17 @@ void loop()
   }
   if (packStage)
   {
+  }
+}
+
+
+
+
+void getCommand()
+{
+  if (inputString.length() > 0)
+  {
+    commandString = inputString.substring(1, 5);
   }
 }
 
