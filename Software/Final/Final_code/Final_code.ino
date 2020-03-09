@@ -75,6 +75,7 @@ void loop()
 
   if (feederStage)
   {
+
   }
   if (scanStage)
   {
@@ -82,7 +83,6 @@ void loop()
     float time = micros();
     while (!scanned)
     {
-
       for (i = 0; i < 50; i++)
       {
         for (j = 0; j < 12; j++)
