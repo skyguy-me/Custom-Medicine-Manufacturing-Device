@@ -86,7 +86,7 @@ void loop()
       startScan = true;
     }
 
-    if (startScan)
+    while (startScan)
     {
       //to capture and store 50 LDR frames and push for data verification stage
       float time = micros();
@@ -152,12 +152,13 @@ void loop()
               break;
             }
           }
-          Serial.print("\n");
+          // Serial.print("\n");
           scanned = true;
         }
         //    i = 0;
         // Serial.println("time to complete = " + String(time = micros() - time) + " microseconds"); // speed check
       }
+      startScan = false;
     }
   }
   if (packStage)
