@@ -15,7 +15,7 @@ int myArray[3][3][3] =   {
     { 111, 112, 113 },
     { 121, 122, 123}
   },
-
+ 
   { { 21, 22, 23 },
     { 211, 212, 213 },
     { 221, 222, 223}
@@ -31,8 +31,8 @@ void setup() {
 
 void loop() {
   int i, j = 0;
-  while (i < 200) {
-    while (j < 10) {
+  while (i < 3) {
+    while (j < 3) {
       Serial.print(String(myArray[1][i][j]) + ',');
       j++;
     }
