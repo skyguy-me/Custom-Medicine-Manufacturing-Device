@@ -73,7 +73,7 @@ void loop()
   if (waitStage)
   {
     //default state to always wait for input from host PC for allowing the feeder to load x balls as requested by host PC
-
+    //example func . need to add moto commands from ZH
     if (commandString.equals("MOTO"))
     {
       String text = getTextNumber();
