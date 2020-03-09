@@ -24,6 +24,8 @@ String inputString = "";     // a string to hold incoming data
 bool stringComplete = false; // whether the string is complete
 String commandString = "";
 
+int linearIntteruptPin = 35; //change as required for mega/controllino board mapping
+
 //single data frame for AI, initially set at 50
 int dataFrameRunning[1][50][12] = {{{0}}};
 
@@ -79,10 +81,11 @@ void loop()
 
   while (scanStage)
   {
-    if(digitalRead(35)) { //randomly assigned pin 35
-
+    if (digitalRead(linearIntteruptPin) == HIGH)
+    { //randomly assigned pin 35
+      startScan = true;
     }
- 
+
     if (startScan)
     {
       //to capture and store 50 LDR frames and push for data verification stage
