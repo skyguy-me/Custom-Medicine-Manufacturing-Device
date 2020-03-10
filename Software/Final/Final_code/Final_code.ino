@@ -1,10 +1,9 @@
 //Project Designer Drugs: Assembling Custom Dosed Personal Medicines
-//NUS ESP3903 project in pursuit of Bachelor of Engineering in Engineering Science 
+//NUS ESP3903 project in pursuit of Bachelor of Engineering in Engineering Science
 //Primary Author and Inital Code by Gokul Nathan
 //
 //Author(s): Gokul Nathan
 //
-
 
 //libraries start
 // #include <I2Cdev.h>
@@ -13,7 +12,6 @@
 // #include <MotorDriver.h>
 // #include <seeed_pwm.h>
 //libraries end
-
 
 //global variable declarations start
 
@@ -190,7 +188,14 @@ void loop()
       }
       startScan = false;
     }
+    scanStage = false;
+    verificationStage = true;
   }
+  if (verificationStage)
+  {
+
+  }
+
   if (packStage)
   {
   }
