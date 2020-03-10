@@ -36,7 +36,7 @@ void setup()
   pinMode(A3, INPUT);
   pinMode(A4, INPUT);
   pinMode(A5, INPUT);
-  pinMode(A6, INPUT);
+  pinMode(A6, INPUT); 
   pinMode(A7, INPUT);
   pinMode(A8, INPUT);
   pinMode(A9, INPUT);
