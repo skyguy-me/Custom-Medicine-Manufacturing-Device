@@ -6,6 +6,9 @@
 //
 
 
+//device starts
+int linearIntteruptPin = 35; //change as required for mega/controllino board mapping
+//device ends
 
 //single data frame for AI, initially set at 50
 int dataFrameRunning[1][50][12] = {{{0}}};
