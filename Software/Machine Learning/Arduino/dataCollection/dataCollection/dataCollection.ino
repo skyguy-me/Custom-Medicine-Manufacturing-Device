@@ -1,6 +1,6 @@
 void setup() {
   // put your setup code here, to run once:
-Serial2.begin(9600);
+Serial.begin(9600);
 }
 
 void loop() {
