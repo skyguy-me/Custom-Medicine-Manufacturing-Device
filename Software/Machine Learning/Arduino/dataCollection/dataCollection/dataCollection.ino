@@ -17,7 +17,6 @@ int DAQ_Frame[10][50][12] = {{{0}}};
 bool DAQstart = false;
 bool transmitData = false;
 
-
 //start of composite result frame
 String predictor = "empty"; //change to indicate desired outcome
 //end of composite result frame
@@ -53,67 +52,69 @@ void loop()
   }
 
   while (DAQstart)
-  {for (i = 0; i < 50; i++)
+  {
+    for (i = 0; i < 50; i++)
+    {
+      for (j = 0; j < 12; j++)
+      {
+        switch (j)
         {
-          for (j = 0; j < 12; j++)
-          {
-            switch (j)
-            {
-            case 0:
-              DAQ_Frame[k][i][j] = analogRead(A0);
-              //  Serial.print(String(DAQ_Frame[1][i][j] = analogRead(A0))); //use for debugging
-              break;
-            case 1:
-              DAQ_Frame[k][i][j] = analogRead(A1);
-              // Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A1)));
-              break;
-            case 2:
-              DAQ_Frame[k][i][j] = analogRead(A2);
-              //  Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A2)));
-              break;
-            case 3:
-              DAQ_Frame[k][i][j] = analogRead(A3);
-              // Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A3)));
-              break;
-            case 4:
-              DAQ_Frame[k][i][j] = analogRead(A4);
-              // Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A4)));
-              break;
-            case 5:
-              DAQ_Frame[k][i][j] = analogRead(A5);
-              //   Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A5)));
-              break;
-            case 6:
-              DAQ_Frame[k][i][j] = analogRead(A6);
-              //Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A6)));
-              break;
-            case 7:
-              DAQ_Frame[k][i][j] = analogRead(A7);
-              // Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A7)));
-              break;
-            case 8:
-              DAQ_Frame[k][i][j] = analogRead(A8);
-              //  Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A8)));
-              break;
-            case 9:
-              DAQ_Frame[k][i][j] = analogRead(A9);
-              // Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A9)));
-              break;
-            case 10:
-              DAQ_Frame[k][i][j] = analogRead(A10);
-              //Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A10)));
-              break;
-            case 11:
-              DAQ_Frame[k][i][j] = analogRead(A11);
-              //Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A11)));
-              break;
-            case 12:
-              DAQ_Frame[k][i][j] = analogRead(A12);
-              //Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A12)) + "\n");
-              break;
-            }
-          }
-
-    DAQstart = false
+        case 0:
+          DAQ_Frame[k][i][j] = analogRead(A0);
+          //  Serial.print(String(DAQ_Frame[1][i][j] = analogRead(A0))); //use for debugging
+          break;
+        case 1:
+          DAQ_Frame[k][i][j] = analogRead(A1);
+          // Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A1)));
+          break;
+        case 2:
+          DAQ_Frame[k][i][j] = analogRead(A2);
+          //  Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A2)));
+          break;
+        case 3:
+          DAQ_Frame[k][i][j] = analogRead(A3);
+          // Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A3)));
+          break;
+        case 4:
+          DAQ_Frame[k][i][j] = analogRead(A4);
+          // Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A4)));
+          break;
+        case 5:
+          DAQ_Frame[k][i][j] = analogRead(A5);
+          //   Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A5)));
+          break;
+        case 6:
+          DAQ_Frame[k][i][j] = analogRead(A6);
+          //Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A6)));
+          break;
+        case 7:
+          DAQ_Frame[k][i][j] = analogRead(A7);
+          // Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A7)));
+          break;
+        case 8:
+          DAQ_Frame[k][i][j] = analogRead(A8);
+          //  Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A8)));
+          break;
+        case 9:
+          DAQ_Frame[k][i][j] = analogRead(A9);
+          // Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A9)));
+          break;
+        case 10:
+          DAQ_Frame[k][i][j] = analogRead(A10);
+          //Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A10)));
+          break;
+        case 11:
+          DAQ_Frame[k][i][j] = analogRead(A11);
+          //Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A11)));
+          break;
+        case 12:
+          DAQ_Frame[k][i][j] = analogRead(A12);
+          //Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A12)) + "\n");
+          break;
+        }
+      }
+      k++;
+      DAQstart = false;
+    }
   }
 }
