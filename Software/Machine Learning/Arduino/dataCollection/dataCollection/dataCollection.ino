@@ -11,8 +11,21 @@ int linearIntteruptPin = 35; //change as required for mega/controllino board map
 //device ends
 
 //single data frame for AI, initially set at 50
-int dataFrameRunning[1][50][12] = {{{0}}};
+int DAQ_Frame[100][50][12] = {{{0}}};
 //end data frame
+
+//state control
+
+
+//start of composite result frame 
+String predictor = "empty"; //change to indicate desired outcome 
+//end of composite result frame
+
+
+//start of index variables
+int x,y,z,i,j,k = 0;
+//end of index variables
+
 
 
 
@@ -23,6 +36,8 @@ Serial.begin(9600);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+if (digitalRead(linearIntteruptPin) == 1){
+
+}
 
 }
