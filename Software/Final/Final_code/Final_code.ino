@@ -87,17 +87,15 @@ void setup()
 void loop()
 {
 
-  if (waitStage)
+  while (waitStage)
   {
     //default state to always wait for input from host PC for allowing the feeder to load x balls as requested by host PC
     //example func . need to add moto commands from ZH
-    if (commandString.equals("MOTO"))
+    if (commandString.equals("TEST"))
     {
       String text = getTextNumber();
       float data = (float)text.toFloat();
-      Serial.print("Float sent");
-      Serial.print(data);
-      Serial.print("\n");
+      Serial.println(data);
     }
     inputString = "";
     commandString = "";
@@ -188,15 +186,15 @@ void loop()
       }
       startScan = false;
     }
+    //close current state and prep for next;
     scanStage = false;
     verificationStage = true;
   }
-  if (verificationStage)
+  while (verificationStage)
   {
-
   }
 
-  if (packStage)
+  while (packStage)
   {
   }
 }
