@@ -132,9 +132,9 @@ void loop()
       {
         for (z = 0; i < 12; z++)
         {
-          
           Serial.print("," + String(DAQ_Frame[x][y][z]));
         }
+        Serial.print(";");
       }
     }
   }
