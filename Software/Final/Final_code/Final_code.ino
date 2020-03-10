@@ -192,6 +192,7 @@ void loop()
   }
   while (verificationStage)
   {
+    
   }
 
   while (packStage)
