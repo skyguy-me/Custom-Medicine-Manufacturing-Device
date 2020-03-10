@@ -128,6 +128,8 @@ void loop()
   {
     for (x = 0; x < k; x++)
     {
+
+      Serial.print("[");
       for (y = 0; y < 50; y++)
       {
         for (z = 0; i < 12; z++)
@@ -136,6 +138,7 @@ void loop()
         }
         Serial.print(";");
       }
+      Serial.print("]");
     }
   }
 }
