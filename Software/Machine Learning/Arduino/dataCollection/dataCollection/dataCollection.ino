@@ -116,5 +116,26 @@ void loop()
       k++;
       DAQstart = false;
     }
+
+    if (k == 10)
+    {
+      transmitData = true;
+      ;
+    }
+  }
+
+  while (transmitData)
+  {
+    for (x = 0; x < k; x++)
+    {
+      for (y = 0; y < 50; y++)
+      {
+        for (z = 0; i < 12; z++)
+        {
+          
+          Serial.print("," + String(DAQ_Frame[x][y][z]));
+        }
+      }
+    }
   }
 }
