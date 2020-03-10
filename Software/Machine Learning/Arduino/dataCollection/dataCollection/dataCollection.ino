@@ -124,11 +124,10 @@ void loop()
     }
   }
 
-  while (transmitData)
+  while (transmitData) //used to print data into csv for export. allDataArray = {[50x12],[50x12]..(total = first index length of DAQFrame)...[50x12]}
   {
     for (x = 0; x < k; x++)
     {
-
       Serial.print("[");
       for (y = 0; y < 50; y++)
       {
