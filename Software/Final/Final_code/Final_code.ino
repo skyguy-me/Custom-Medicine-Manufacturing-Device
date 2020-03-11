@@ -87,7 +87,8 @@ void setup()
 void loop()
 {
 
-  while (waitStage)
+  getCommand();
+  if (waitStage)
   {
     //default state to always wait for input from host PC for allowing the feeder to load x balls as requested by host PC
     //example func . need to add moto commands from ZH
@@ -103,6 +104,16 @@ void loop()
 
   while (feederStage)
   {
+    getCommand();
+
+    if (commandString.equals("DISP"))
+    {
+      int dispenseNumber = getNumberText();
+      serialSend("#DISP" + String(dispenseNumber) + "\n", Serial1); //assume the motor arduino and shield is connected via serial 1
+    }
+
+    feederStage = false;
+    scanStage = true;
   }
 
   while (scanStage)
@@ -192,7 +203,6 @@ void loop()
   }
   while (verificationStage)
   {
-    
   }
 
   while (packStage)
@@ -217,6 +227,12 @@ String getTextNumber()
   return value;
 }
 
+int getNumberText()
+{
+  String value = inputString.substring(5, inputString.length() - 1);
+  int data = (int)value.toInt();
+  return data;
+}
 //Serial event handlers start
 void serialEvent()
 {
@@ -228,7 +244,7 @@ void serialEvent()
     if (inChar == '\n')
     {
       stringComplete = true;
-      Serial.println(stringComplete);
+    //  Serial.println(stringComplete);
     }
   }
 }
@@ -242,7 +258,7 @@ void serialEvent1()
     if (inChar == '\n')
     {
       stringComplete = true;
-      Serial.println(stringComplete);
+    //  Serial.println(stringComplete);
     }
   }
 }
@@ -256,8 +272,15 @@ void serialEvent2()
     if (inChar == '\n')
     {
       stringComplete = true;
-      Serial.println(stringComplete);
+     // Serial.println(stringComplete);
     }
   }
 }
 //Serial event handlers end
+
+//serial transmit handlers start
+void serialSend(String myString, Stream &Serialx)
+{
+  Serialx.write((const char *)&myString, sizeof(myString));
+}
+//serial transmit handlers end
