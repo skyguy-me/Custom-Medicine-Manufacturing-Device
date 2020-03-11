@@ -17,38 +17,49 @@ bool trigger;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  pinMode(7,INPUT);
+  pinMode(7, INPUT);
+  motor.begin();
 
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  while (Standby) {
-    if (stringComplete)
-    {
-      stringComplete = false;
-      getCommand();
-
-      if (commandString.equals("DISP")) {
-        if (seccommandString == "RRED" || seccommandString == "GREN" || seccommandString == "BLUE") {
-          dispenseNum = getTextNumber();
-          Dispense = true; Standby = false;
-        }
-
-      }
-    }
+  getCommand();
+  if (seccommandString == "RRED" && digitalRead(7)==LOW) {
+    motor.speed(0, 255);
   }
-  while (Dispense) {
-    while (dispenseNum != 0) {
-      motor.speed(0, 255);
-      trigger = digitalRead(7);
-      if (trigger != HIGH) {
-        dispenseNum--;
-      }
-    }
-    motor.speed(0,0);
-    Standby = true; Dispense = false;
+  else{
+    motor.speed(0, 0);
   }
+
+
+
+//put your main code here, to run repeatedly:
+//  while (Standby) {
+//    if (stringComplete)
+//    {
+//      stringComplete = false;
+//      getCommand();
+//
+//      if (commandString.equals("DISP")) {
+//        if (seccommandString == "RRED" || seccommandString == "GREN" || seccommandString == "BLUE") {
+//          dispenseNum = getTextNumber();
+//          Dispense = true; Standby = false;
+//        }
+//
+//      }
+//    }
+//  }
+//  while (Dispense) {
+//    while (dispenseNum != 0) {
+//      motor.speed(0, 255);
+//      trigger = digitalRead(7);
+//      if (trigger != HIGH) {
+//        dispenseNum--;
+//      }
+//    }
+//    motor.speed(0, 0);
+//    Standby = true; Dispense = false;
+//  }
 }
 
 int getTextNumber()
@@ -68,13 +79,14 @@ void getCommand()
 }
 
 void serialEvent() {
+  Serial.println("serialEvent");
   while (Serial.available()) {
     char inChar = (char)Serial.read();
-    // Serial.println(inChar);
+    Serial.println(inChar);
     inputString += inChar;
     if (inChar == '\n') {
       stringComplete = true;
-      //Serial.println(stringComplete);
+      Serial.println(stringComplete);
     }
   }
 }
