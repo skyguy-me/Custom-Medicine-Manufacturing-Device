@@ -37,6 +37,7 @@ int linearIntteruptPin = 35; //change as required for mega/controllino board map
 String inputString = "";     // a string to hold incoming data
 bool stringComplete = false; // whether the string is complete
 String commandString = "";
+String subCommandString = "";
 //end for serial communication
 
 //single data frame for AI, initially set at 50
@@ -106,11 +107,22 @@ void loop()
   {
     getCommand();
 
-    if (commandString.equals("DISP"))
+    if (commandString.equals("PARA"))
     {
       int dispenseNumber = getNumberText();
       itemsToBeScanned = dispenseNumber;
-      serialSend("#DISP" + String(dispenseNumber) + "\n", Serial1); //assume the motor arduino and shield is connected via serial 1
+      switch (getSecondaryCommand())
+      {
+      case "RRED":
+        serialSend("#DISP" + subCommandString + String(dispenseNumber) + "\n", Serial1); //assume the motor arduino and shield is connected via serial 1
+        break;
+      case "BLUE":
+        serialSend("#DISP" + subCommandString + String(dispenseNumber) + "\n", Serial1); //assume the motor arduino and shield is connected via serial 1
+        break;
+      case "GREN":
+        serialSend("#DISP" + subCommandString + String(dispenseNumber) + "\n", Serial1); //assume the motor arduino and shield is connected via serial 1
+        break;
+      }
     }
     feederStage = false;
     scanStage = true;
@@ -218,18 +230,25 @@ void getCommand()
     commandString = inputString.substring(1, 5);
   }
 }
+void getSecondaryCommand()
+{
+  if (inputString.length() > 0)
+  {
+    subCommandString = inputString.substring(5, 9);
+  }
+}
 
 //retrieve numerical values from string;
 String getTextNumber()
 {
-  String value = inputString.substring(5, inputString.length() - 1);
+  String value = inputString.substring(9, inputString.length() - 1);
   float data = (float)value.toFloat();
   return value;
 }
 
 int getNumberText()
 {
-  String value = inputString.substring(5, inputString.length() - 1);
+  String value = inputString.substring(9, inputString.length() - 1);
   int data = (int)value.toInt();
   return data;
 }
