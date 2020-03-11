@@ -17,7 +17,7 @@ bool trigger;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  pinMode(A7,INPUT);
+  pinMode(7,INPUT);
 
 }
 
@@ -41,11 +41,12 @@ void loop() {
   while (Dispense) {
     while (dispenseNum != 0) {
       motor.speed(0, 255);
-      trigger = analogRead(A7);
-      if (trigger >= 0) {
+      trigger = digitalRead(7);
+      if (trigger != HIGH) {
         dispenseNum--;
       }
     }
+    motor.speed(0,0);
     Standby = true; Dispense = false;
   }
 }
