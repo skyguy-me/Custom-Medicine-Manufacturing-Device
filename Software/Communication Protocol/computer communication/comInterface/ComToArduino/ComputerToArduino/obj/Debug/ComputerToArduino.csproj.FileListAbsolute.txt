@@ -1,0 +1,37 @@
+c:\users\nick\documents\visual studio 2017\Projects\ComputerToArduino\ComputerToArduino\bin\Debug\ComputerToArduino.exe
+c:\users\nick\documents\visual studio 2017\Projects\ComputerToArduino\ComputerToArduino\bin\Debug\ComputerToArduino.pdb
+c:\users\nick\documents\visual studio 2017\Projects\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.Form1.resources
+c:\users\nick\documents\visual studio 2017\Projects\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.Properties.Resources.resources
+c:\users\nick\documents\visual studio 2017\Projects\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.csproj.GenerateResource.Cache
+c:\users\nick\documents\visual studio 2017\Projects\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.exe
+c:\users\nick\documents\visual studio 2017\Projects\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.pdb
+c:\users\nick\documents\visual studio 2017\Projects\ComputerToArduino\ComputerToArduino\bin\Debug\ComputerToArduino.exe.manifest
+c:\users\nick\documents\visual studio 2017\Projects\ComputerToArduino\ComputerToArduino\bin\Debug\ComputerToArduino.application
+c:\users\nick\documents\visual studio 2017\Projects\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.exe.manifest
+c:\users\nick\documents\visual studio 2017\Projects\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.application
+C:\Users\Nick\Documents\Visual Studio 2017\Projects\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.csprojAssemblyReference.cache
+C:\Users\Nick\Documents\Visual Studio 2017\Projects\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.csproj.CoreCompileInputs.cache
+C:\Users\e0310994\Downloads\ArduinoCompurerCommunication-1\ComputerToArduino\ComputerToArduino\bin\Debug\ComputerToArduino.exe.manifest
+C:\Users\e0310994\Downloads\ArduinoCompurerCommunication-1\ComputerToArduino\ComputerToArduino\bin\Debug\ComputerToArduino.application
+C:\Users\e0310994\Downloads\ArduinoCompurerCommunication-1\ComputerToArduino\ComputerToArduino\bin\Debug\ComputerToArduino.exe
+C:\Users\e0310994\Downloads\ArduinoCompurerCommunication-1\ComputerToArduino\ComputerToArduino\bin\Debug\ComputerToArduino.pdb
+C:\Users\e0310994\Downloads\ArduinoCompurerCommunication-1\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.csprojAssemblyReference.cache
+C:\Users\e0310994\Downloads\ArduinoCompurerCommunication-1\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.Form1.resources
+C:\Users\e0310994\Downloads\ArduinoCompurerCommunication-1\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.Properties.Resources.resources
+C:\Users\e0310994\Downloads\ArduinoCompurerCommunication-1\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.csproj.GenerateResource.cache
+C:\Users\e0310994\Downloads\ArduinoCompurerCommunication-1\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.exe.manifest
+C:\Users\e0310994\Downloads\ArduinoCompurerCommunication-1\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.application
+C:\Users\e0310994\Downloads\ArduinoCompurerCommunication-1\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.exe
+C:\Users\e0310994\Downloads\ArduinoCompurerCommunication-1\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.pdb
+C:\Users\e0310994\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\computerInterface\ComputerToArduino\ComputerToArduino\bin\Debug\ComputerToArduino.exe.manifest
+C:\Users\e0310994\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\computerInterface\ComputerToArduino\ComputerToArduino\bin\Debug\ComputerToArduino.application
+C:\Users\e0310994\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\computerInterface\ComputerToArduino\ComputerToArduino\bin\Debug\ComputerToArduino.exe
+C:\Users\e0310994\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\computerInterface\ComputerToArduino\ComputerToArduino\bin\Debug\ComputerToArduino.pdb
+C:\Users\e0310994\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\computerInterface\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.csprojAssemblyReference.cache
+C:\Users\e0310994\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\computerInterface\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.Form1.resources
+C:\Users\e0310994\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\computerInterface\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.Properties.Resources.resources
+C:\Users\e0310994\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\computerInterface\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.csproj.GenerateResource.cache
+C:\Users\e0310994\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\computerInterface\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.exe.manifest
+C:\Users\e0310994\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\computerInterface\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.application
+C:\Users\e0310994\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\computerInterface\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.exe
+C:\Users\e0310994\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\computerInterface\ComputerToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.pdb
