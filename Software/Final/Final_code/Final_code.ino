@@ -260,6 +260,7 @@ void loop()
 //interupt func for scanner optical switch start
 void scannerStart_Interrupt()
 {
+  
   scanStage = true;
   startScan = true;
 }
