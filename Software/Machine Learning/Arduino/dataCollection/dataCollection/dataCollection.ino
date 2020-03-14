@@ -6,7 +6,10 @@
 //
 
 //device starts
-int linearIntteruptPin = 35; //change as required for mega/controllino board mapping
+int linearIntteruptPin = 20; //change as required for mega/controllino board mapping
+int dataFrameRunning[1][25][11] = {{{0}}};
+int compressedDataFrame[][275] = {{0}}; //lower spec training data
+int liveDataFrame[275] = {0};
 //device ends
 
 //single data frame for AI, initially set at 50
@@ -36,7 +39,7 @@ void setup()
   pinMode(A3, INPUT);
   pinMode(A4, INPUT);
   pinMode(A5, INPUT);
-  pinMode(A6, INPUT); 
+  pinMode(A6, INPUT);
   pinMode(A7, INPUT);
   pinMode(A8, INPUT);
   pinMode(A9, INPUT);
@@ -53,64 +56,89 @@ void loop()
 
   while (DAQstart)
   {
-    for (i = 0; i < 50; i++)
+    for (i = 0; i < 25; i++)
     {
-      for (j = 0; j < 12; j++)
+      for (j = 0; j < 11; j++)
       {
         switch (j)
         {
-        case 0:
-          DAQ_Frame[k][i][j] = analogRead(A0);
-          //  Serial.print(String(DAQ_Frame[1][i][j] = analogRead(A0))); //use for debugging
-          break;
-        case 1:
-          DAQ_Frame[k][i][j] = analogRead(A1);
-          // Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A1)));
-          break;
-        case 2:
-          DAQ_Frame[k][i][j] = analogRead(A2);
-          //  Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A2)));
-          break;
-        case 3:
-          DAQ_Frame[k][i][j] = analogRead(A3);
-          // Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A3)));
-          break;
-        case 4:
-          DAQ_Frame[k][i][j] = analogRead(A4);
-          // Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A4)));
-          break;
-        case 5:
-          DAQ_Frame[k][i][j] = analogRead(A5);
-          //   Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A5)));
-          break;
-        case 6:
-          DAQ_Frame[k][i][j] = analogRead(A6);
-          //Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A6)));
-          break;
-        case 7:
-          DAQ_Frame[k][i][j] = analogRead(A7);
-          // Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A7)));
-          break;
-        case 8:
-          DAQ_Frame[k][i][j] = analogRead(A8);
-          //  Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A8)));
-          break;
-        case 9:
-          DAQ_Frame[k][i][j] = analogRead(A9);
-          // Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A9)));
-          break;
-        case 10:
-          DAQ_Frame[k][i][j] = analogRead(A10);
-          //Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A10)));
-          break;
-        case 11:
-          DAQ_Frame[k][i][j] = analogRead(A11);
-          //Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A11)));
-          break;
-        case 12:
-          DAQ_Frame[k][i][j] = analogRead(A12);
-          //Serial.print("," + String(DAQ_Frame[1][i][j] = analogRead(A12)) + "\n");
-          break;
+
+          case 0:
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A0);
+            liveDataFrame[x] = analogRead(A0);
+            x++;
+            //  Serial.print(String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A0))); //use for debugging
+            break;
+
+          case 1:
+            liveDataFrame[x] = analogRead(A1);
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A1);
+            // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A1)));
+            x++;
+            break;
+
+          case 2:
+            liveDataFrame[x] = analogRead(A2);
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A2);
+            //  Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A2)));
+            x++;
+            break;
+
+          case 3:
+            liveDataFrame[x] = analogRead(A3);
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A3);
+            x++;
+            // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A3)));
+            break;
+
+          case 4:
+            liveDataFrame[x] = analogRead(A4);
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A4);
+            x++;
+            // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A4)));
+            break;
+
+          case 5:
+            liveDataFrame[x] = analogRead(A5);
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A5);
+            x++;
+
+            //   Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A5)));
+            break;
+          case 6:
+            liveDataFrame[x] = analogRead(A6);
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A6);
+            x++;
+            //Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A6)));
+            break;
+
+          case 7:
+            liveDataFrame[x] = analogRead(A7);
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A7);
+            x++;
+            // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A7)));
+            break;
+
+          case 8:
+            liveDataFrame[x] = analogRead(A8);
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A8);
+            x++;
+            //  Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A8)));
+            break;
+
+          case 9:
+            liveDataFrame[x] = analogRead(A9);
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A9);
+            x++;
+            // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A9)));
+            break;
+
+          case 10:
+            liveDataFrame[x] = analogRead(A10);
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A10);
+            x++;
+            //Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A10)));
+            break;
         }
       }
       k++;
