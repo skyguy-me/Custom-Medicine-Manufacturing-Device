@@ -29,8 +29,8 @@ bool startScan = false;
 //scan flags end
 
 //device starts
-int pixySelect = 49;         //change as required for mega/controllino board mapping
-int linearIntteruptPin = 35; //change as required for mega/controllino board mapping
+int pixySelect = 49;                //change as required for mega/controllino board mapping
+int scannerStart_IntteruptPin = 20; //change as required for mega/controllino board mapping
 //device ends
 
 //start for serial communication
@@ -42,7 +42,8 @@ String subCommandString = "";
 
 //single data frame for AI, initially set at 25
 int dataFrameRunning[1][25][11] = {{{0}}};
-int compressedDataFrame[10][275] = {{0}};
+int compressedDataFrame[][275] = {{0}}; //lower spec training data
+int liveDataFrame[275] = {0};
 //end data frame
 
 //index variables starts
@@ -53,7 +54,6 @@ int y = 0;
 //index variables ends
 
 //global variable declarations end
-
 void setup()
 {
   // put your setup code here, to run once:
@@ -65,6 +65,8 @@ void setup()
     Serial.begin(9600); // communicate with host PC
     Serial1.begin(9600);
     Serial2.begin(9600);
+
+    attachInterrupt(digitalPinToInterrupt(scannerStart_IntteruptPin), scannerStart_Interrupt, RISING);
 
     pinMode(A0, INPUT);
     pinMode(A1, INPUT);
@@ -87,8 +89,10 @@ void setup()
 
 void loop()
 {
-  getCommand();
-  if (waitStage)
+
+  getCommands();
+
+  while (waitStage)
   {
     //default state to always wait for input from host PC for allowing the feeder to load x balls as requested by host PC
     //example func . need to add moto commands from ZH
@@ -98,6 +102,13 @@ void loop()
       float data = (float)text.toFloat();
       Serial.println(data);
     }
+
+    if (commandString.equals("ENAB"))
+    {
+      waitStage = false;
+      feederStage = true;
+    }
+
     inputString = "";
     commandString = "";
   }
@@ -105,7 +116,7 @@ void loop()
 
   while (feederStage)
   {
-    getCommand();
+    getCommands();
 
     if (commandString.equals("PARA"))
     {
@@ -125,21 +136,16 @@ void loop()
       {
         serialSend("#DISP" + subCommandString + String(dispenseNumber) + "\n", Serial1); //assume the motor arduino and shield is connected via serial 1
       }
+      feederStage = false;
+      scanStage = true;
     }
   }
-  feederStage = false;
-  scanStage = true;
 
   while (scanStage)
   {
-    if (digitalRead(linearIntteruptPin) == HIGH)
-    { //randomly assigned pin 35
-      startScan = true;
-    }
-
     while (startScan)
     {
-      //to capture and store 50 LDR frames and push for data verification stage
+      //to capture and store 25 LDR frames and push for data verification stage
       // float time = micros();
       for (i = 0; i < 25; i++)
       {
@@ -147,69 +153,85 @@ void loop()
         {
           switch (j)
           {
-            case 0:
-              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A0);
-              x++;
-              //  Serial.print(String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A0))); //use for debugging
-              break;
-            case 1:
-              x++;
-              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A1);
-              // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A1)));
-              break;
-            case 2:
-              x++;
-              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A2);
-              //  Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A2)));
-              break;
-            case 3:
-              x++;
-              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A3);
-              // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A3)));
-              break;
-            case 4:
-              x++;
-              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A4);
-              // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A4)));
-              break;
-            case 5:
-              x++;
-              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A5);
-              //   Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A5)));
-              break;
-            case 6:
-              x++;
-              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A6);
-              //Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A6)));
-              break;
-            case 7:
-              x++;
-              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A7);
-              // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A7)));
-              break;
-            case 8:
-              x++;
-              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A8);
-              //  Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A8)));
-              break;
-            case 9:
-              x++;
-              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A9);
-              // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A9)));
-              break;
-            case 10:
-              x++;
-              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A10);
-              //Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A10)));
-              break;
-            case 11:
-              x++;
-              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A11);
-              //Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A11)));
-              break;
+
+          case 0:
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A0);
+            liveDataFrame[x] = analogRead(A0);
+            x++;
+            //  Serial.print(String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A0))); //use for debugging
+            break;
+
+          case 1:
+            liveDataFrame[x] = analogRead(A1);
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A1);
+            // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A1)));
+            x++;
+            break;
+
+          case 2:
+            liveDataFrame[x] = analogRead(A2);
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A2);
+            //  Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A2)));
+            x++;
+            break;
+
+          case 3:
+            liveDataFrame[x] = analogRead(A3);
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A3);
+            x++;
+            // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A3)));
+            break;
+
+          case 4:
+            liveDataFrame[x] = analogRead(A4);
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A4);
+            x++;
+            // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A4)));
+            break;
+
+          case 5:
+            liveDataFrame[x] = analogRead(A5);
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A5);
+            x++;
+
+            //   Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A5)));
+            break;
+          case 6:
+            liveDataFrame[x] = analogRead(A6);
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A6);
+            x++;
+            //Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A6)));
+            break;
+
+          case 7:
+            liveDataFrame[x] = analogRead(A7);
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A7);
+            x++;
+            // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A7)));
+            break;
+
+          case 8:
+            liveDataFrame[x] = analogRead(A8);
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A8);
+            x++;
+            //  Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A8)));
+            break;
+
+          case 9:
+            liveDataFrame[x] = analogRead(A9);
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A9);
+            x++;
+            // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A9)));
+            break;
+
+          case 10:
+            liveDataFrame[x] = analogRead(A10);
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A10);
+            x++;
+            //Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A10)));
+            break;
           }
         }
-        // Serial.print("\n");
       }
       //    i = 0;
       // Serial.println("time to complete = " + String(time = micros() - time) + " microseconds"); // speed check
@@ -223,18 +245,26 @@ void loop()
       verificationStage = true;
     }
   }
+
   while (verificationStage)
   {
+    //code space for ML algortithm as needed
   }
 
   while (packStage)
   {
   }
-
 }
 
+//interupt func for scanner optical switch start
+void scannerStart_Interrupt()
+{
+  startScan = true;
+}
+//interupt func for scanner optical switch end
+
 //retrieve command from incoming string
-void getCommand()
+void getCommands()
 {
   if (inputString.length() > 0)
   {
