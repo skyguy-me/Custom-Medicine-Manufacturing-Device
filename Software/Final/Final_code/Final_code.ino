@@ -6,11 +6,11 @@
 //
 
 //libraries start
-// #include <I2Cdev.h>
-// #include <PCA9685.h>
-// #include <SPI.h>
-// #include <MotorDriver.h>
-// #include <seeed_pwm.h>
+#include <I2Cdev.h>
+#include <PCA9685.h>
+#include <SPI.h>
+#include <MotorDriver.h>
+#include <seeed_pwm.h>
 //libraries end
 
 //global variable declarations start
@@ -147,66 +147,66 @@ void loop()
         {
           switch (j)
           {
-          case 0:
-            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A0);
-            x++;
-            //  Serial.print(String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A0))); //use for debugging
-            break;
-          case 1:
-            x++;
-            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A1);
-            // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A1)));
-            break;
-          case 2:
-            x++;
-            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A2);
-            //  Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A2)));
-            break;
-          case 3:
-            x++;
-            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A3);
-            // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A3)));
-            break;
-          case 4:
-            x++;
-            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A4);
-            // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A4)));
-            break;
-          case 5:
-            x++;
-            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A5);
-            //   Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A5)));
-            break;
-          case 6:
-            x++;
-            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A6);
-            //Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A6)));
-            break;
-          case 7:
-            x++;
-            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A7);
-            // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A7)));
-            break;
-          case 8:
-            x++;
-            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A8);
-            //  Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A8)));
-            break;
-          case 9:
-            x++;
-            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A9);
-            // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A9)));
-            break;
-          case 10:
-            x++;
-            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A10);
-            //Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A10)));
-            break;
-          case 11:
-            x++;
-            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A11);
-            //Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A11)));
-            break;
+            case 0:
+              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A0);
+              x++;
+              //  Serial.print(String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A0))); //use for debugging
+              break;
+            case 1:
+              x++;
+              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A1);
+              // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A1)));
+              break;
+            case 2:
+              x++;
+              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A2);
+              //  Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A2)));
+              break;
+            case 3:
+              x++;
+              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A3);
+              // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A3)));
+              break;
+            case 4:
+              x++;
+              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A4);
+              // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A4)));
+              break;
+            case 5:
+              x++;
+              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A5);
+              //   Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A5)));
+              break;
+            case 6:
+              x++;
+              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A6);
+              //Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A6)));
+              break;
+            case 7:
+              x++;
+              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A7);
+              // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A7)));
+              break;
+            case 8:
+              x++;
+              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A8);
+              //  Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A8)));
+              break;
+            case 9:
+              x++;
+              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A9);
+              // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A9)));
+              break;
+            case 10:
+              x++;
+              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A10);
+              //Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A10)));
+              break;
+            case 11:
+              x++;
+              compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A11);
+              //Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A11)));
+              break;
           }
         }
         // Serial.print("\n");
@@ -230,7 +230,7 @@ void loop()
   while (packStage)
   {
   }
-  
+
 }
 
 //retrieve command from incoming string
