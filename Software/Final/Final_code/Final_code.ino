@@ -87,7 +87,6 @@ void setup()
 
 void loop()
 {
-
   getCommand();
   if (waitStage)
   {
@@ -123,115 +122,115 @@ void loop()
         serialSend("#DISP" + subCommandString + String(dispenseNumber) + "\n", Serial1); //assume the motor arduino and shield is connected via serial 1
       }
       else if (subCommandString == "GREN")
-      { serialSend("#DISP" + subCommandString + String(dispenseNumber) + "\n", Serial1); //assume the motor arduino and shield is connected via serial 1
+      {
+        serialSend("#DISP" + subCommandString + String(dispenseNumber) + "\n", Serial1); //assume the motor arduino and shield is connected via serial 1
       }
-     
     }
   }
   feederStage = false;
   scanStage = true;
-}
 
-while (scanStage)
-{
-  if (digitalRead(linearIntteruptPin) == HIGH)
-  { //randomly assigned pin 35
-    startScan = true;
-  }
-
-  while (startScan)
+  while (scanStage)
   {
-    //to capture and store 50 LDR frames and push for data verification stage
-    // float time = micros();
-    for (i = 0; i < 25; i++)
-    {
-      for (j = 0; j < 11; j++)
-      {
-        switch (j)
-        {
-        case 0:
-          compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A0);
-          x++;
-          //  Serial.print(String(dataFrameRunning[1][i][j] = analogRead(A0))); //use for debugging
-          break;
-        case 1:
-          x++;
-          compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A1);
-          // Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A1)));
-          break;
-        case 2:
-          x++;
-          compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A2);
-          //  Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A2)));
-          break;
-        case 3:
-          x++;
-          compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A3);
-          // Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A3)));
-          break;
-        case 4:
-          x++;
-          compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A4);
-          // Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A4)));
-          break;
-        case 5:
-          x++;
-          compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A5);
-          //   Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A5)));
-          break;
-        case 6:
-          x++;
-          compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A6);
-          //Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A6)));
-          break;
-        case 7:
-          x++;
-          compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A7);
-          // Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A7)));
-          break;
-        case 8:
-          x++;
-          compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A8);
-          //  Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A8)));
-          break;
-        case 9:
-          x++;
-          compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A9);
-          // Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A9)));
-          break;
-        case 10:
-          x++;
-          compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A10);
-          //Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A10)));
-          break;
-        case 11:
-          x++;
-          compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A11);
-          //Serial.print("," + String(dataFrameRunning[1][i][j] = analogRead(A11)));
-          break;
-        }
-      }
-      // Serial.print("\n");
+    if (digitalRead(linearIntteruptPin) == HIGH)
+    { //randomly assigned pin 35
+      startScan = true;
     }
-    //    i = 0;
-    // Serial.println("time to complete = " + String(time = micros() - time) + " microseconds"); // speed check
-    itemsToBeScanned--;
-    startScan = false;
-  }
-  //close current state and prep for next;
-  if (itemsToBeScanned == 0)
-  {
-    scanStage = false;
-    verificationStage = true;
-  }
-}
-while (verificationStage)
-{
-}
 
-while (packStage)
-{
-}
+    while (startScan)
+    {
+      //to capture and store 50 LDR frames and push for data verification stage
+      // float time = micros();
+      for (i = 0; i < 25; i++)
+      {
+        for (j = 0; j < 11; j++)
+        {
+          switch (j)
+          {
+          case 0:
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A0);
+            x++;
+            //  Serial.print(String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A0))); //use for debugging
+            break;
+          case 1:
+            x++;
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A1);
+            // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A1)));
+            break;
+          case 2:
+            x++;
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A2);
+            //  Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A2)));
+            break;
+          case 3:
+            x++;
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A3);
+            // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A3)));
+            break;
+          case 4:
+            x++;
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A4);
+            // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A4)));
+            break;
+          case 5:
+            x++;
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A5);
+            //   Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A5)));
+            break;
+          case 6:
+            x++;
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A6);
+            //Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A6)));
+            break;
+          case 7:
+            x++;
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A7);
+            // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A7)));
+            break;
+          case 8:
+            x++;
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A8);
+            //  Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A8)));
+            break;
+          case 9:
+            x++;
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A9);
+            // Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A9)));
+            break;
+          case 10:
+            x++;
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A10);
+            //Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A10)));
+            break;
+          case 11:
+            x++;
+            compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A11);
+            //Serial.print("," + String(  compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A11)));
+            break;
+          }
+        }
+        // Serial.print("\n");
+      }
+      //    i = 0;
+      // Serial.println("time to complete = " + String(time = micros() - time) + " microseconds"); // speed check
+      itemsToBeScanned--;
+      startScan = false;
+    }
+    //close current state and prep for next;
+    if (itemsToBeScanned == 0)
+    {
+      scanStage = false;
+      verificationStage = true;
+    }
+  }
+  while (verificationStage)
+  {
+  }
+
+  while (packStage)
+  {
+  }
+  
 }
 
 //retrieve command from incoming string
