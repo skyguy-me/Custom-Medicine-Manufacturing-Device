@@ -242,14 +242,16 @@ void loop()
       // Serial.println("time to complete = " + String(time = micros() - time) + " microseconds"); // speed check
       itemsToBeScanned--;
       startScan = false;
+
     }
-    
+
     //close current state and prep for next;
     if (itemsToBeScanned == 0)
     {
       scanStage = false;
       verificationStage = true;
     }
+    
   }
 
   while (verificationStage)
