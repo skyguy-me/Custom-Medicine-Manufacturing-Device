@@ -126,7 +126,6 @@ void loop()
       getSecondaryCommand();
       if (subCommandString == "RRED")
       {
-
         serialSend("#DISP" + subCommandString + String(dispenseNumber) + "\n", Serial1); //assume the motor arduino and shield is connected via serial 1
       }
       else if (subCommandString == "RRED")
@@ -154,7 +153,6 @@ void loop()
         {
           switch (j)
           {
-
           case 0:
             compressedDataFrame[1][x] = dataFrameRunning[1][i][j] = analogRead(A0);
             liveDataFrame[x] = analogRead(A0);
