@@ -46,6 +46,10 @@ int compressedDataFrame[][275] = {{0}}; //lower spec training data
 int liveDataFrame[275] = {0};
 //end data frame
 
+
+int itemsToBeScanned = 0;
+
+
 //index variables starts
 int i = 0;
 int j = 0;
@@ -112,8 +116,8 @@ void loop()
     inputString = "";
     commandString = "";
   }
-  int itemsToBeScanned = 0;
-
+  
+  
   while (feederStage)
   {
     getCommands();
@@ -127,10 +131,12 @@ void loop()
       {
         serialSend("#DISP" + subCommandString + String(dispenseNumber) + "\n", Serial1); //assume the motor arduino and shield is connected via serial 1
       }
+
       else if (subCommandString == "BLUE")
       {
         serialSend("#DISP" + subCommandString + String(dispenseNumber) + "\n", Serial1); //assume the motor arduino and shield is connected via serial 1
       }
+      
       else if (subCommandString == "GREN")
       {
         serialSend("#DISP" + subCommandString + String(dispenseNumber) + "\n", Serial1); //assume the motor arduino and shield is connected via serial 1
