@@ -60,6 +60,7 @@ void loop() {
         Serial.println(dispenseNum, DEC);
       }
     }
+    motor.speed(0,0);
     Dispense = false; Standby = true;
   }
 }
