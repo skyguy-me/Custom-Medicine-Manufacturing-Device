@@ -5,7 +5,6 @@
 //Author(s): Gokul Nathan
 //
 
-
 //libraries start
 #include <I2Cdev.h>
 #include <PCA9685.h>
@@ -264,6 +263,8 @@ void scannerStart_Interrupt()
 }
 //interupt func for scanner optical switch end
 
+
+
 //retrieve command from incoming string
 void getCommands()
 {
@@ -273,6 +274,10 @@ void getCommands()
     subCommandString = inputString.substring(5, 9);
   }
 }
+
+
+
+
 void getSecondaryCommand()
 {
   if (inputString.length() > 0)
@@ -280,6 +285,7 @@ void getSecondaryCommand()
     subCommandString = inputString.substring(5, 9);
   }
 }
+
 
 //retrieve numerical values from string;
 String getTextNumber()
@@ -289,27 +295,35 @@ String getTextNumber()
   return value;
 }
 
+
+
 int getNumberText()
 {
   String value = inputString.substring(9, inputString.length() - 1);
   int data = (int)value.toInt();
   return data;
 }
+
+
+
 //Serial event handlers start
 void serialEvent()
 {
   while (Serial.available())
   {
     char inChar = (char)Serial.read();
-    // Serial.println(inChar);
+    //Serial.println(inChar);
     inputString += inChar;
     if (inChar == '\n')
     {
       stringComplete = true;
-      //  Serial.println(stringComplete);
+      // Serial.println(stringComplete);
     }
   }
 }
+
+
+
 void serialEvent1()
 {
   while (Serial1.available())
@@ -324,6 +338,8 @@ void serialEvent1()
     }
   }
 }
+
+
 void serialEvent2()
 {
   while (Serial2.available())
