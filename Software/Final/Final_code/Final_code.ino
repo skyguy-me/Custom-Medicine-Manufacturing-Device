@@ -146,6 +146,8 @@ void loop()
     }
   }
 
+
+
   while (scanStage)
   {
     while (startScan)
