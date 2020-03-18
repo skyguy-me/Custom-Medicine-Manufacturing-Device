@@ -19,6 +19,7 @@ void setup() {
   Serial.begin(9600);
   pinMode(7, INPUT);
   motor.begin();
+  motor.speed(0,0);
 
 }
 
@@ -26,7 +27,6 @@ void loop() {
   // put your main code here, to run repeatedly:
 
   if (Standby) {
-    Serial.println("Standing By");
     if (stringComplete) {
       stringComplete = false;
       getCommand();
@@ -53,14 +53,15 @@ void loop() {
     while (dispenseNum != 0) {
 
       motor.speed(0, 255);
-      trigger = digitalRead(7);
+      trigger = digitalRead(7); //press button to trigger
       if (trigger == HIGH) {
         dispenseNum--;
         delay(1000); //for button testing, otherwise one push depletes fast
         Serial.println(dispenseNum, DEC);
       }
     }
-    motor.speed(0,0);
+    motor.brake(0);
+    Serial.println("DISPENSED");
     Dispense = false; Standby = true;
   }
 }
