@@ -19,6 +19,7 @@ void setup() {
   Serial.begin(9600);
   pinMode(7, INPUT);
   motor.begin();
+  motor.speed(0,0);
 
 }
 
@@ -26,7 +27,6 @@ void loop() {
   // put your main code here, to run repeatedly:
 
   if (Standby) {
-    Serial.println("Standing By");
     if (stringComplete) {
       stringComplete = false;
       getCommand();
@@ -60,7 +60,8 @@ void loop() {
         Serial.println(dispenseNum, DEC);
       }
     }
-    motor.speed(0,0);
+    motor.brake(0);
+    Serial.println("DISPENSED");
     Dispense = false; Standby = true;
   }
 }
