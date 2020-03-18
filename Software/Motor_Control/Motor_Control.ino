@@ -53,7 +53,7 @@ void loop() {
     while (dispenseNum != 0) {
 
       motor.speed(0, 255);
-      trigger = digitalRead(7);
+      trigger = digitalRead(7); //press button to trigger
       if (trigger == HIGH) {
         dispenseNum--;
         delay(1000); //for button testing, otherwise one push depletes fast
