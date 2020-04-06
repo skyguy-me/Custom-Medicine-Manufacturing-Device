@@ -156,7 +156,9 @@ void loop()
 
 
     }
+    Serial.println("\n\n Ball detected");
     transmitData = false;
+    
   }
   j = x = k = i = 0;
 }
