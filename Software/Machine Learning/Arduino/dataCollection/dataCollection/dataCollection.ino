@@ -28,12 +28,22 @@ String predictor = "empty"; //change to indicate desired outcome
 int x, y, z, i, j, k = 0;
 //end of index variables
 
+
+
+const int buttonPin = 2;
+const int buttonPin2 = 13;
+int buttonState = 0;
+
 void setup()
 {
   // put your setup code here, to run once:
   Serial.begin(9600);
 
   k = 0;
+
+  pinMode(buttonPin, INPUT);
+
+  pinMode(buttonPin2, INPUT);
 
   attachInterrupt(digitalPinToInterrupt(scannerStart_IntteruptPin), scannerStart_Interrupt, FALLING);
 
@@ -53,81 +63,100 @@ void setup()
 
 void loop()
 {
-  for (j = 0; j < 275; j++)
-  {
-    switch (j % 11)
-    {
 
-      case 0:
-        liveDataFrame[x] = analogRead(A0);
-        x++;
-        break;
+  buttonState = digitalRead(buttonPin);
 
-      case 1:
-        liveDataFrame[x] = analogRead(A1);
-        x++;
-        break;
-
-      case 2:
-        liveDataFrame[x] = analogRead(A2);
-        x++;
-        break;
-
-      case 3:
-        liveDataFrame[x] = analogRead(A3);
-        x++;
-        break;
-
-      case 4:
-        liveDataFrame[x] = analogRead(A4);
-        x++;
-        break;
-
-      case 5:
-        liveDataFrame[x] = analogRead(A5);
-        x++;
-        break;
-      case 6:
-        liveDataFrame[x] = analogRead(A6);
-        x++;
-        break;
-
-      case 7:
-        liveDataFrame[x] = analogRead(A7);
-        x++;
-        break;
-
-      case 8:
-        liveDataFrame[x] = analogRead(A8);
-        x++;
-        break;
-
-      case 9:
-        liveDataFrame[x] = analogRead(A9);
-        x++;
-        break;
-
-      case 10:
-        liveDataFrame[x] = analogRead(A10);
-        x++;
-        break;
-    }
+  // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
+  if (buttonState == HIGH) {
+    DAQstart = true;
+  }
+  buttonState = digitalRead(buttonPin2);
+  if (buttonState == HIGH) {
+    transmitData = true;
   }
 
 
-  for (i = 0; i < 275; i++)
-  {
 
-    if (i % 11 == 0) {
-      Serial.println("");
+  if (DAQstart == true) {
+    for (j = 0; j < 275; j++)
+    {
+      switch (j % 11)
+      {
 
-      Serial.print(String(liveDataFrame[i]));
+        case 0:
+          liveDataFrame[x] = analogRead(A0);
+          x++;
+          break;
+
+        case 1:
+          liveDataFrame[x] = analogRead(A1);
+          x++;
+          break;
+
+        case 2:
+          liveDataFrame[x] = analogRead(A2);
+          x++;
+          break;
+
+        case 3:
+          liveDataFrame[x] = analogRead(A3);
+          x++;
+          break;
+
+        case 4:
+          liveDataFrame[x] = analogRead(A4);
+          x++;
+          break;
+
+        case 5:
+          liveDataFrame[x] = analogRead(A5);
+          x++;
+          break;
+        case 6:
+          liveDataFrame[x] = analogRead(A6);
+          x++;
+          break;
+
+        case 7:
+          liveDataFrame[x] = analogRead(A7);
+          x++;
+          break;
+
+        case 8:
+          liveDataFrame[x] = analogRead(A8);
+          x++;
+          break;
+
+        case 9:
+          liveDataFrame[x] = analogRead(A9);
+          x++;
+          break;
+
+        case 10:
+          liveDataFrame[x] = analogRead(A10);
+          x++;
+          break;
+      }
     }
-    else {
-      Serial.print("," + String(liveDataFrame[i]));
+    DAQstart = false;
+  }
+
+  if (transmitData == true) {
+    for (i = 0; i < 275; i++)
+    {
+
+      if (i % 11 == 0) {
+        Serial.println("");
+
+        Serial.print(String(liveDataFrame[i]));
+      }
+      else {
+        Serial.print("," + String(liveDataFrame[i]));
+      }
+
+
     }
-
-
+    transmitData = false;
   }
   j = x = k = i = 0;
 }
