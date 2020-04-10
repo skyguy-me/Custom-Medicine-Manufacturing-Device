@@ -1,0 +1,13 @@
+C:\Users\gokul\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\comInterface\ComToArduino\ComputerToArduino\bin\Debug\ComputerToArduino.exe.manifest
+C:\Users\gokul\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\comInterface\ComToArduino\ComputerToArduino\bin\Debug\ComputerToArduino.application
+C:\Users\gokul\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\comInterface\ComToArduino\ComputerToArduino\bin\Debug\ComputerToArduino.exe
+C:\Users\gokul\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\comInterface\ComToArduino\ComputerToArduino\bin\Debug\ComputerToArduino.pdb
+C:\Users\gokul\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\comInterface\ComToArduino\ComputerToArduino\obj\Debug\CompToArduino.csprojAssemblyReference.cache
+C:\Users\gokul\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\comInterface\ComToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.Form1.resources
+C:\Users\gokul\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\comInterface\ComToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.Properties.Resources.resources
+C:\Users\gokul\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\comInterface\ComToArduino\ComputerToArduino\obj\Debug\CompToArduino.csproj.GenerateResource.cache
+C:\Users\gokul\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\comInterface\ComToArduino\ComputerToArduino\obj\Debug\CompToArduino.csproj.CoreCompileInputs.cache
+C:\Users\gokul\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\comInterface\ComToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.exe.manifest
+C:\Users\gokul\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\comInterface\ComToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.application
+C:\Users\gokul\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\comInterface\ComToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.exe
+C:\Users\gokul\Documents\GitHub\Custom-Medicine-Manufacturing-Device\Software\Communication Protocol\computer communication\comInterface\ComToArduino\ComputerToArduino\obj\Debug\ComputerToArduino.pdb
